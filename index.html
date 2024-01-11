@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My 360° Image Experience</title>
+    <meta name="description" content="360° Image Experience using A-Frame">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            // Get the video element
+            var videoEl = document.querySelector('#penguin-sledding');
+
+            // Get the entity that will trigger the video play/pause
+            var triggerEl = document.querySelector('#video-trigger');
+
+            // Play video on mouseenter
+            triggerEl.addEventListener('mouseenter', function() {
+                videoEl.play();
+            });
+
+            // Pause video on mouseleave
+            triggerEl.addEventListener('mouseleave', function() {
+                videoEl.pause();
+            });
+        });
+        AFRAME.registerComponent('play-sound-on-hover', {
+            init: function () {
+                var soundEl = this.el.firstChild;
+
+                this.el.addEventListener('mouseenter', function () {
+                    soundEl.components.sound.playSound();
+                });
+
+                this.el.addEventListener('mouseleave', function () {
+                    soundEl.components.sound.pauseSound();
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            <video id="penguin-sledding" autoplay loop="true" src="./test.mp4"></video>
+            <img id="my-image" src="popup.jpg">
+            <audio id="river" src="sound.mp3" preload="auto"></audio>
+          </a-assets>
+        <a-sky src="./Hannibal_the_great.png" rotation="0 -130 0">
+        </a-sky>
+        <a-camera><a-entity cursor geometry="primitive:torus  ; radius:0.2 ;radius-tubular:0.001;"  opacity="0"  material="color: white;shader: flat;" position="0 0 -2"></a-entity></a-camera>
+
+        <!-- <a-box position="0,1 1.5 -3" color="blue"
+        animation__mouseenter="property: visible; from: false; to: true; startEvents: mouseenter; dur: 200";
+        animation__mouseleave="property: visible; from: true; to: false; startEvents: mouseleave; dur: 200";></a-box> -->
+       
+
+        <a-sphere  position="0,1 1.5 -20" color="red"material="opacity: 1; roughness:5;  shader: flat;"
+        animation__mouseenter="property: visible; from: true; to: false; startEvents: mouseenter; dur: 200";
+        animation__mouseleave="property: visible; from: false; to: true; startEvents: mouseleave; dur: 200";
+        ></a-sphere >
+
+        <a-sphere  position="20 1.5 -5" color="red"material="opacity: 1;  shader: flat"
+        animation__mouseenter="property: visible; from: true; to: false; startEvents: mouseenter; dur: 200";
+        animation__mouseleave="property: visible; from: false; to: true; startEvents: mouseleave; dur: 200";
+        ></a-sphere >
+        <a-sphere  position="-30 1.5 1" color="red"material="opacity: 1;  shader: flat"
+        animation__mouseenter="property: visible; from: true; to: false; startEvents: mouseenter; dur: 200";
+        animation__mouseleave="property: visible; from: false; to: true; startEvents: mouseleave; dur: 200";
+        event-set__mouseenter="_event: mouseenter; _target: #river-sound; sound.play"
+        event-set__mouseleave="_event: mouseleave; _target: #river-sound; sound.pause" play-sound-on-hover>
+        <a-sound src="#river" autoplay="false" position="0 1.5 -20"></a-sound>
+</a-sphere>
+        ></a-sphere >
+        <a-video id="video-trigger" autoplay src="#penguin-sledding" width="16" height="9" visible="false"  position="0,1 1.5 -10" animation__mouseenter="property: visible; from: false; to: true; startEvents: mouseenter; dur: 200";
+        animation__mouseleave="property: visible; from: true; to: false; startEvents: mouseleave; dur: 200";
+        ></a-video>
+        <a-image src="#my-image" width="16" height="9" position="15 1.5 -5" visible="false" rotation="0 100 0" animation__mouseenter="property: visible; from: false; to: true; startEvents: mouseenter; dur: 200";
+        animation__mouseleave="property: visible; from: true; to: false; startEvents: mouseleave; dur: 200";></a-image>
+        <!-- <a-sound id="load-sound" src="#river" autoplay="false" position="0 1.5 -20"></a-sound> -->
+
+</a-image>
+
+       
+        
+    </a-scene>
+</body>
+</html>
