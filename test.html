@@ -1,102 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>Demo</title>
-    <meta name="description" content="360° Image Experience using A-Frame">
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <style>
-        #overlay {
-            background: rgba(0, 0, 0, 0.8) url('./back.jpg') no-repeat center center;
-            background-size: cover;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            cursor: pointer;
-
-        }
-        #startButton {
-            padding: 10px 20px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-    </style>
-    <script>
-        window.addEventListener('load', function() {
-            // Get the video element
-            var videoEl = document.querySelector('#penguin-sledding');
-
-            // Get the entity that will trigger the video play/pause
-            var triggerEl = document.querySelector('#video-trigger');
-
-            // Play video on mouseenter
-            triggerEl.addEventListener('mouseenter', function() {
-                videoEl.play();
+    <head>
+        <meta charset="utf-8">
+        <title>Demo</title>
+        <meta name="description" content="360° Image Experience using A-Frame">
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+ </style>
+        <style>
+            #overlay {
+                background: rgba(0, 0, 0, 0.8) url('./back.jpg') no-repeat center center;
+                background-size: cover;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 9999;
+                cursor: pointer;
+            }
+            #startButton {
+                padding: 10px 20px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+            window.addEventListener('load', function() {
+                // Get the video element
+                var videoEl = document.querySelector('#penguin-sledding');
+                // Get the entity that will trigger the video play/pause
+                var triggerEl = document.querySelector('#video-trigger');
+                // Play video on mouseenter
+                triggerEl.addEventListener('mouseenter', function() {
+                    videoEl.play();
+                });
+                // Pause video on mouseleave
+                triggerEl.addEventListener('mouseleave', function() {
+                    videoEl.pause();
+                });
             });
-
-            // Pause video on mouseleave
-            triggerEl.addEventListener('mouseleave', function() {
-                videoEl.pause();
-            });
-        });
-       
-    </script>
-</head>
+        </script>
+    </head>
 <body>
-    <div id="overlay">
-        <img src="./start.png" id="startButton"/>
-    </div>    <a-scene style="height: 100vh;">
+    <div id="overlay" style="display: none;">
+        <img src="./start.png" id="startButton">
+    </div>    <a-scene style="height: 100vh;" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" device-orientation-permission-ui="">
         <a-assets>
-            <video id="penguin-sledding" autoplay loop="true" src="./test.webm"></video>
+            <video id="penguin-sledding" autoplay="" loop="true" src="./test.webm" playsinline="" webkit-playsinline="" crossorigin="anonymous"></video>
             <img id="my-image" src="popup1.png">
             <audio id="river" src="sound.mp3" preload="auto"></audio>
           </a-assets>
-        <a-sky src="./hannibal2.png" rotation="0 -130 0">
+        <a-sky src="./hannibal2.png" rotation="0 -130 0" material="" geometry="" scale="">
         </a-sky>
-        <a-camera><a-entity cursor geometry="primitive:torus  ; radius:0.2 ;radius-tubular:0.001;"  opacity="0"  material="color: white;shader: flat;" position="0 0 -2"></a-entity></a-camera>
-
+        <a-camera camera="" position="" rotation="" look-controls="" wasd-controls=""><a-entity cursor="" geometry="primitive:torus  ; radius:0.2 ;radius-tubular:0.001;" opacity="0" material="color: white;shader: flat;" position="0 0 -2" raycaster=""></a-entity></a-camera>
         <!-- <a-box position="0,1 1.5 -3" color="blue"
         animation__mouseenter="property: visible; from: false; to: true; startEvents: mouseenter; dur: 200";
         animation__mouseleave="property: visible; from: true; to: false; startEvents: mouseleave; dur: 200";></a-box> -->
-       
-
-        <a-sphere  position="10.089 5.723 -20.000" color="white"material="opacity: 0.7; roughness:5;  shader: flat;"
-        animation__mouseenter="property: visible; from: true; to: false; startEvents: mouseenter; dur: 200";
-        animation__mouseleave="property: visible; from: false; to: true; startEvents: mouseleave; dur: 200";
-        ></a-sphere >
-
-        <a-sphere  position="11.767 12.581 21.231" color="white"material="opacity: 0.7;  shader: flat"
-        animation__mouseenter="property: visible; from: true; to: false; startEvents: mouseenter; dur: 200";
-        animation__mouseleave="property: visible; from: false; to: true; startEvents: mouseleave; dur: 200";
-        ></a-sphere >
-        <a-sphere id="sound" position="-30 1.5 1" color="red"material="opacity: 0.7;  shader: flat"
-        animation__mouseenter="property: visible; from: true; to: false; startEvents: mouseenter; dur: 200";
-        animation__mouseleave="property: visible; from: false; to: true; startEvents: mouseleave; dur: 200";
-        event-set__mouseenter="_event: mouseenter; _target: #river-sound; sound.play"
-        event-set__mouseleave="_event: mouseleave; _target: #river-sound; sound.pause" >
-        <a-sound src="#river" autoplay="false" 
-        ></a-sound>
+        <a-sphere position="10.089 5.723 -20.000" color="white" material="opacity: 0.7; roughness:5;  shader: flat;" animation__mouseenter="property: visible; from: true; to: false; startEvents: mouseenter; dur: 200" ;="" animation__mouseleave="property: visible; from: false; to: true; startEvents: mouseleave; dur: 200" geometry=""></a-sphere>
+        <a-sphere position="11.767 12.581 21.231" color="white" material="opacity: 0.7;  shader: flat" animation__mouseenter="property: visible; from: true; to: false; startEvents: mouseenter; dur: 200" ;="" animation__mouseleave="property: visible; from: false; to: true; startEvents: mouseleave; dur: 200" geometry=""></a-sphere>
+        <a-sphere id="sound" position="-30 1.5 1" color="red" material="opacity: 0.7;  shader: flat" animation__mouseenter="property: visible; from: true; to: false; startEvents: mouseenter; dur: 200" ;="" animation__mouseleave="property: visible; from: false; to: true; startEvents: mouseleave; dur: 200" event-set__mouseenter="_event: mouseenter; _target: #river-sound; sound.play" event-set__mouseleave="_event: mouseleave; _target: #river-sound; sound.pause" geometry="">
+        <a-sound src="#river" autoplay="false" sound=""></a-sound>
 </a-sphere>
-        ></a-sphere>
-        <a-video id="video-trigger" autoplay src="#penguin-sledding" width="16" height="9" visible="false" rotation="0 -19 -2" position="8.089 5.723 -15.000" animation__mouseenter="property: visible; from: false; to: true; startEvents: mouseenter; dur: 200";
-        animation__mouseleave="property: visible; from: true; to: false; startEvents: mouseleave; dur: 200";
-        ></a-video>
-        <a-image src="#my-image" width="12" height="9" position="10.687 12.551 17.911" visible="false" rotation="10 -149 0" animation__mouseenter="property: visible; from: false; to: true;  startEvents: mouseenter; dur: 200";
-        animation__mouseleave="property: visible; from: true; to: false; startEvents: mouseleave; dur: 200";></a-image>
+        &gt;
+        <a-video id="video-trigger" autoplay="" src="#penguin-sledding" width="16" height="9" visible="false" rotation="0 -19 -2" position="8.089 5.723 -15.000" animation__mouseenter="property: visible; from: false; to: true; startEvents: mouseenter; dur: 200" ;="" animation__mouseleave="property: visible; from: true; to: false; startEvents: mouseleave; dur: 200" material="" geometry=""></a-video>
+        <a-image src="#my-image" width="12" height="9" position="10.687 12.551 17.911" visible="false" rotation="10 -149 0" animation__mouseenter="property: visible; from: false; to: true;  startEvents: mouseenter; dur: 200" ;="" animation__mouseleave="property: visible; from: true; to: false; startEvents: mouseleave; dur: 200" material="" geometry=""></a-image>
         <!-- <a-sound id="load-sound" src="#river" autoplay="false" position="0 1.5 -20"></a-sound> -->
-
-</a-image>
-
-       
-        
-    </a-scene>
+    <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="1512" height="966" style=""></canvas><div class="a-loader-title" style="display: none;">Demo</div><div class="a-enter-vr" aframe-injected=""><button class="a-enter-vr-button" title="Enter VR mode with a headset or fullscreen mode on a desktop. Visit https://webvr.rocks or https://webvr.info for more information." aframe-injected=""></button></div><div class="a-enter-ar a-hidden" aframe-injected=""><button class="a-enter-ar-button" title="Enter AR mode with a headset or handheld device. Visit https://webvr.rocks or https://webvr.info for more information." aframe-injected=""></button></div><div class="a-orientation-modal a-hidden" aframe-injected=""><button aframe-injected="">Exit VR</button></div><a-entity light="" data-aframe-default-light="" aframe-injected=""></a-entity><a-entity light="" position="" data-aframe-default-light="" aframe-injected=""></a-entity></a-scene>
     <script>
         document.querySelector('#startButton').addEventListener('click', function() {
             document.querySelector('#overlay').style.display = 'none';
@@ -106,14 +79,12 @@
         this.el.sceneEl.addEventListener('loaded', () => {
             // Assuming the sound element has an id of 'my-sound'
             var soundEl = document.querySelector('#sound');
-
             if (soundEl) {
                 soundEl.addEventListener('mouseenter', function () {
                     if (soundEl.components.sound) {
                         soundEl.components.sound.playSound();
                     }
                 });
-
                 soundEl.addEventListener('mouseleave', function () {
                     if (soundEl.components.sound) {
                         soundEl.components.sound.pauseSound();
